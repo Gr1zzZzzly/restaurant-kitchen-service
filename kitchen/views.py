@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from kitchen.forms import DishForm, SearchForm, CookForm
-from kitchen.models import Cook, Dish, DishType
+from kitchen.models import Cook, Dish, DishType, Ingredient
 
 
 def index(request):
@@ -167,3 +167,53 @@ class CookUpdateView(generic.UpdateView):
 class CookDeleteView(generic.DeleteView):
     model = Cook
     success_url = reverse_lazy("")
+
+
+class IngredientListView(generic.ListView):
+    model = Ingredient
+    paginate_by = 5
+    queryset = Ingredient.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(IngredientListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("title", "")
+        context["search_form"] = SearchForm(
+            initial={
+                "title": name,
+            }
+        )
+
+        return context
+
+    def get_queryset(self):
+        form_ = SearchForm(self.request.GET)
+        if form_.is_valid():
+            return self.queryset.filter(
+                name__icontains=form_.cleaned_data["title"]
+            )
+
+        return self.queryset
+
+
+class IngredientDetailView(generic.DetailView):
+    model = Ingredient
+
+
+class IngredientCreateView(generic.CreateView):
+    model = Ingredient
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:ingredient-list")
+
+
+class IngredientUpdateView(generic.UpdateView):
+    model = Ingredient
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:ingredient-list")
+
+
+class IngredientDeleteView(generic.DeleteView):
+    model = DishType
+    success_url = reverse_lazy("kitchen:ingredient-list")
+
+

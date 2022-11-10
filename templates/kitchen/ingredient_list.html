@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Ingredient list
+    <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% include "includes/search.html" %}
+  <br>
+  {% if ingredient_list %}
+    <ul>
+      {% for ingredient in ingredient_list %}
+        <li>
+          <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %} ">{{ ingredient.id }}</a>
+          {{ ingredient.name }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no ingredients in restaurant</p>
+  {% endif %}
+{% endblock %}

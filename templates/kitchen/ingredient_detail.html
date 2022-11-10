@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ ingredient.name }}
+    <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+
+    <h3>Dishes</h3>
+  {% if ingredient.dishes.all %}
+  <ul>
+      {% for dish in ingredient.dishes.all %}
+        <li>
+          Name: {{ dish.name }}
+          Dish type: {{ dish.dish_type.name }}
+        </li>
+
+      {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no dishes with ingredient</p>
+  {% endif %}
+{% endblock %}

@@ -23,7 +23,7 @@
     {% for dish in cook.dishes.all %}
         <hr>
         <p><strong>Name:</strong> {{ dish.name }}</p>
-        <p><strong>Dish type:</strong>{{ dish.dish_tipe.name }}</p>
+        <p><strong>Dish type:</strong>{{ dish.dish_type.name }}</p>
         <p class="text-muted"><strong>Id:</strong> {{cook.id}}</p>
 
     {% empty %}
