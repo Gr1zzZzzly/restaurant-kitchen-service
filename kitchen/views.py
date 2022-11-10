@@ -161,12 +161,10 @@ class CookCreateView(generic.CreateView):
 class CookUpdateView(generic.UpdateView):
     model = Cook
     form_class = CookForm
-    success_url = reverse_lazy("")
 
 
 class CookDeleteView(generic.DeleteView):
     model = Cook
-    success_url = reverse_lazy("")
 
 
 class IngredientListView(generic.ListView):
