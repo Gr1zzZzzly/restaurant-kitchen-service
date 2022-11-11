@@ -12,6 +12,7 @@ def index(request):
     count_cooks = Cook.objects.count()
     count_dishes = Dish.objects.count()
     count_dichtipes = DishType.objects.count()
+    count_ingredients = Ingredient.objects.count()
 
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
@@ -20,6 +21,7 @@ def index(request):
         "count_cooks": count_cooks,
         "count_dishes": count_dishes,
         "count_dichtipes": count_dichtipes,
+        "count_ingredients": count_ingredients,
         "num_visits": num_visits + 1,
     }
 
@@ -107,13 +109,11 @@ class DishDetailView(generic.DetailView):
 class DishCreateView(generic.CreateView):
     model = Dish
     form_class = DishForm
-    success_url = reverse_lazy("kitchen:dish-list")
 
 
 class DishUpdateView(generic.UpdateView):
     model = Dish
     form_class = DishForm
-    success_url = reverse_lazy("kitchen:dish-list")
 
 
 class DishDeleteView(generic.DeleteView):

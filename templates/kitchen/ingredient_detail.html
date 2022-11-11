@@ -1,29 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    {{ ingredient.name }}
-    <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  <div class="home-info sm-list">
+    <h1>
+      {{ ingredient.name }}
+      <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
+        Delete
+      </a>
 
-    <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
+      <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}" class="btn btn-secondary link-to-page me-3">
+        Update
+      </a>
+    </h1>
 
-    <h3>Dishes</h3>
-  {% if ingredient.dishes.all %}
-  <ul>
+      <h3>Dishes:</h3>
+    {% if ingredient.dishes.all %}
+    <table class="table text-center d-inline-block">
+      <tr>
+        <th>Name</th>
+        <th>Dish type</th>
+        <th>Count of cooks</th>
+      </tr>
       {% for dish in ingredient.dishes.all %}
-        <li>
-          Name: {{ dish.name }}
-          Dish type: {{ dish.dish_type.name }}
-        </li>
-
+        <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.name }}</a></td>
+        <td>{{ dish.dish_type.name }}</td>
+        <td>{{ dish.cooks.count }}</td>
       {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no dishes with ingredient</p>
-  {% endif %}
+      </table>
+    {% else %}
+      <p>There are no dishes with this ingredient</p>
+    {% endif %}
+  </div>
 {% endblock %}

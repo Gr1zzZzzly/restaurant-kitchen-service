@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Ingredient list
-    <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% include "includes/search.html" %}
-  <br>
-  {% if ingredient_list %}
-    <ul>
+  <div class="home-info sm-list">
+    <h1>
+      Ingredient list
+      <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+    {% include "includes/search.html" %}
+    <br>
+    {% if ingredient_list %}
+      <table class="table text-center d-inline-block">
+        <tr>
+          <th>Name</th>
+          <th>Count of dishes</th>
+        </tr>
       {% for ingredient in ingredient_list %}
-        <li>
-          <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %} ">{{ ingredient.id }}</a>
-          {{ ingredient.name }}
-        </li>
+        <tr>
+          <td><a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %} ">{{ ingredient.name }}</a></td>
+          <td>{{ ingredient.dishes.count }}</td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no ingredients in restaurant</p>
-  {% endif %}
+
+      </table>
+    {% else %}
+      <p>There are no ingredients in restaurant</p>
+    {% endif %}
+  </div>
 {% endblock %}
