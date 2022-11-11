@@ -3,7 +3,7 @@
 {% block title %}<title>Dish Types</title>{% endblock %}
 
 {% block content %}
-  <div class="home-info">
+  <div class="substrate">
     <h1>
       Dish types
       <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary link-to-page">
@@ -17,6 +17,7 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
+          <th>Count dishes</th>
           <th>Update</th>
           <th>Delete</th>
         </tr>
@@ -28,6 +29,9 @@
             </td>
             <td>
                 {{ dish_type.name }}
+            </td>
+            <td>
+              {{ dish_type.dish_set.count }}
             </td>
             <td>
                 <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">

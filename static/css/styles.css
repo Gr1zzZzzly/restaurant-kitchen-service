@@ -4,15 +4,17 @@ html, body {
 
 body ul {
     padding-inline-start: 0;
+
 }
-.home-info{
+.substrate{
     padding: 20px;
-    background-color: rgba(100%,100%,100%,0.8);
+    background-color: rgba(100%,100%,100%,0.9);
+
 }
-.home-info h1 a{
+.substrate h1 a{
     float: right;
 }
-.home-info td a{
+.substrate td a{
     width: 30%;
     text-decoration: none;
 
@@ -21,17 +23,22 @@ body ul {
     padding: 0.5rem 2.5rem;
 }
 
-.home-info td a:hover{
+.substrate td a:hover{
     text-decoration: underline;
 }
 
 .head-page{
     padding-top: 20px;
     height: 100%;
-    background-image: url("../img/img.png");
+    background-image: url("../img/img_2.png");
     background-size: cover;
-
 }
+
+.search-field input{
+    height: 47px;
+}
+
+
 .navigation>li{
     text-align: center;
     opacity: 0.9;

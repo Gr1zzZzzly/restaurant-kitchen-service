@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishForm, SearchForm, CookForm
+from kitchen.forms import DishForm, SearchForm, CookForm, IngredientForm
 from kitchen.models import Cook, Dish, DishType, Ingredient
 
 
@@ -200,18 +200,18 @@ class IngredientDetailView(generic.DetailView):
 
 class IngredientCreateView(generic.CreateView):
     model = Ingredient
-    fields = "__all__"
+    form_class = IngredientForm
     success_url = reverse_lazy("kitchen:ingredient-list")
 
 
 class IngredientUpdateView(generic.UpdateView):
     model = Ingredient
-    fields = "__all__"
+    form_class = IngredientForm
     success_url = reverse_lazy("kitchen:ingredient-list")
 
 
 class IngredientDeleteView(generic.DeleteView):
-    model = DishType
+    model = Ingredient
     success_url = reverse_lazy("kitchen:ingredient-list")
 
 

@@ -3,7 +3,7 @@
 {% block title %}<title>Dishes</title>{% endblock %}
 
 {% block content %}
-  <div class="home-info sm-list">
+  <div class="substrate sm-list">
     <h1>
       Dish list
       <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">
@@ -17,15 +17,28 @@
       <tr>
         <th>Name</th>
         <th>Type</th>
-        <th>Ingredients</th>
+        <th>Price</th>
         <th>Count of cooks</th>
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
     {% for dish in dish_list %}
       <tr>
         <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.name }}</a></td>
         <td>{{ dish.dish_type.name }}</td>
-        <td>{{ dish.ingredients.count }}</td>
+        <td>{{ dish.price }}$</td>
         <td>{{ dish.cooks.count }}</td>
+        <td>
+            <a href="{% url 'kitchen:dish-update' pk=dish.id %}">
+              Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red"
+              href="{% url 'kitchen:dish-update' pk=dish.id %}">
+              Delete
+            </a>
+          </td>
       </tr>
     {% endfor %}
     </table>

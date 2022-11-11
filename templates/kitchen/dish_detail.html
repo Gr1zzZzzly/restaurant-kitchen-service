@@ -3,7 +3,7 @@
 {% block title %}<title>{{ dish.name }}</title>{% endblock %}
 
 {% block content %}
-  <div class="home-info">
+  <div class="substrate">
     <h1>
       {{ dish.name }}
       <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
@@ -14,6 +14,10 @@
         Update
       </a>
     </h1>
+    <p class="h3">Price: {{ dish.price }}$</p>
+    {% if dish.description %}
+      <p>{{ dish.description }}</p>
+    {% endif %}
     <p>Dish type: {{ dish.dish_type.name }}</p>
 
     <div class="d-flex dish-detail">

@@ -3,7 +3,7 @@
 {% block title %}<title>{{ ingredient.name }}</title>{% endblock %}
 
 {% block content %}
-  <div class="home-info sm-list">
+  <div class="substrate sm-list">
     <h1>
       {{ ingredient.name }}
       <a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}" class="btn btn-danger link-to-page">
@@ -24,9 +24,11 @@
         <th>Count of cooks</th>
       </tr>
       {% for dish in ingredient.dishes.all %}
+      <tr>
         <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.name }}</a></td>
         <td>{{ dish.dish_type.name }}</td>
         <td>{{ dish.cooks.count }}</td>
+      </tr>
       {% endfor %}
       </table>
     {% else %}
