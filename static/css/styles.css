@@ -1,0 +1,48 @@
+html, body {
+  height: 100%;
+}
+
+body ul {
+    padding-inline-start: 0;
+}
+.home-info{
+    padding: 20px;
+    background-color: rgba(100%,100%,100%,0.8);
+}
+.home-info h1 a{
+    float: right;
+}
+.home-info td a{
+    width: 30%;
+    text-decoration: none;
+
+}
+.sm-list th{
+    padding: 0.5rem 2.5rem;
+}
+
+.home-info td a:hover{
+    text-decoration: underline;
+}
+
+.head-page{
+    padding-top: 20px;
+    height: 100%;
+    background-image: url("../img/img.png");
+    background-size: cover;
+
+}
+.navigation>li{
+    text-align: center;
+    opacity: 0.9;
+}
+.navigation>li:hover{
+    font-size: 20px;
+    opacity: 1;
+
+}
+
+.search {
+    width: 150px;
+}
+

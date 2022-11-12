@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}<title>{{ dish.name }}</title>{% endblock %}
+
+{% block content %}
+  <div class="home-info">
+    <h1>
+      {{ dish.name }}
+      <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Delete
+      </a>
+
+      <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page me-3">
+        Update
+      </a>
+    </h1>
+    <p>Dish type: {{ dish.dish_type.name }}</p>
+
+    <div class="d-flex dish-detail">
+      <div class="me-5">
+        {% if dish.ingredients.all %}
+          <h4>Ingredients:</h4>
+          <ul class="d-inline-block">
+            {% for ingredient in dish.ingredients.all %}
+
+                <li class="list-group-item">
+                  <a href="{% url 'kitchen:ingredient-detail' pk=ingredient.id %} ">{{ ingredient.name }}</a>
+                </li>
+
+            {% endfor %}
+          </ul>
+        {% else %}
+            <p>There are no ingredients</p>
+        {% endif %}
+      </div>
+      <div>
+        {% if dish.cooks.all %}
+          <h4>Cooks:</h4>
+           <ul class="d-inline-block">
+            {% for cook in dish.cooks.all %}
+              <li class="list-group-item">
+                <a href="{% url 'kitchen:cook-detail' pk=cook.id %} ">
+                  {{ cook.username }}
+                </a>
+                {% if cook.first_name %}
+                    ({{ cook.first_name }} {{ cook.last_name }} )
+                {% endif %}
+              </li>
+            {% endfor %}
+           </ul>
+        {% else %}
+            <p>There are no cooks</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

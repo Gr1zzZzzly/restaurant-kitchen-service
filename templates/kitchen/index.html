@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="home-info">
+      <h1 class="">Restaurant Kitchen Service</h1>
+      <p class="h5">Welcome to Best Restaurant Ever!</p>
+      <h2>Dynamic content</h2>
+      <p class="h6">The Restaurant kitchen has the following record counts:</p>
+      <ul class="d-inline-block">
+        <li class="list-group-item"><strong>Cooks:</strong> {{ count_cooks }}</li>
+        <li class="list-group-item"><strong>Dishes:</strong> {{ count_dishes }}</li>
+        <li class="list-group-item"><strong>Dish Types:</strong> {{ count_dichtipes }}</li>
+        <li class="list-group-item"><strong>Ingredients:</strong> {{ count_ingredients }}</li>
+      </ul>
+
+      <p class="h6">You have visited this page
+          {{ num_visits }} time{{ num_visits|pluralize }}.
+      </p>
+    </div>
+{% endblock %}

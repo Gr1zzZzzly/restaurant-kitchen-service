@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Dishes</title>{% endblock %}
+
+{% block content %}
+  <div class="home-info sm-list">
+    <h1>
+      Dish list
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">
+        Create
+      </a>
+    </h1>
+    {% include "includes/search.html" %}
+    <br>
+    {% if dish_list %}
+    <table class="table text-center d-inline-block">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Ingredients</th>
+        <th>Count of cooks</th>
+      </tr>
+    {% for dish in dish_list %}
+      <tr>
+        <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.name }}</a></td>
+        <td>{{ dish.dish_type.name }}</td>
+        <td>{{ dish.ingredients.count }}</td>
+        <td>{{ dish.cooks.count }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+      <p>There are no dishes in restaurant</p>
+    {% endif %}
+  </div>
+{% endblock %}

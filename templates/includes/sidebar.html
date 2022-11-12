@@ -1,0 +1,22 @@
+<ul class="nav nav-pills flex-column mb-auto navigation">
+  {% if user.is_authenticated %}
+    <li class="list-group-item"><a href="{{ user.get_absolute_url }}" class="nav-link">{{ user.get_username }}</a></li>
+    <li class="list-group-item"><a href="{% url 'logout'%}?next={{request.path}}" class="nav-link">Logout</a></li>
+  {% else %}
+    <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}" class="nav-link">Login</a></li>
+  {% endif %}
+
+  <br>
+
+  <li class="list-group-item">
+    <a href="{% url 'kitchen:index' %}" class="nav-link">
+
+      Home
+    </a>
+  </li>
+  <li class="list-group-item"><a href="{% url 'kitchen:cook-list' %}" class="nav-link">Cooks</a>
+  </li>
+  <li class="list-group-item"><a href="{% url 'kitchen:dish-list' %}" class="nav-link">Dishes</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchen:dish-types-list' %}" class="nav-link">Dish types</a></li>
+  <li class="list-group-item"><a href="{% url 'kitchen:ingredient-list' %}" class="nav-link">Ingredients</a></li>
+</ul>
