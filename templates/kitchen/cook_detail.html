@@ -3,7 +3,7 @@
 {% block title %}<title>{{ cook.username }}</title>{% endblock %}
 
 {% block content %}
-  <div class="home-info sm-list">
+  <div class="substrate sm-list">
     <h1>
       Username: {{ cook.username }}
       <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">

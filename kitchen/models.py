@@ -21,9 +21,10 @@ class Cook(AbstractUser):
         verbose_name_plural = "Cooks"
 
     def __str__(self):
+        name = f"({self.first_name} {self.last_name})" if self.first_name else ""
         return (
             f"{self.username} "
-            f"({self.first_name} {self.last_name}) "
+            f"{name} "
             f"experience: {self.years_of_experience}"
         )
 
@@ -46,7 +47,7 @@ class Dish(models.Model):
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     dishes = models.ManyToManyField(Dish, related_name="ingredients", blank=True)
 
     def __str__(self):

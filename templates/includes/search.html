@@ -1,5 +1,5 @@
 {% load crispy_forms_filters %}
-<form action="" method="get" class="d-flex col-sm-5 input-group">
-  {{ search_form }}
+<form action="" method="get" class="d-flex col-sm-5 input-group search-field">
+  {{ search_form|crispy }}
   <input type="submit" value="Search" class="btn btn-primary">
 </form>
