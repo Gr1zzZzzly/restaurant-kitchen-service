@@ -3,6 +3,7 @@
 Django project for managing cooks and dishes in kitchen
 
 ## Check it out!
+[Restaurant kitchen service](LINK)
 
 ## Installation
 
