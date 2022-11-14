@@ -39,6 +39,12 @@ class CookForm(UserCreationForm):
         )
 
 
+class CookUpdateExperienceForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ["years_of_experience"]
+
+
 class SearchForm(forms.Form):
     title = forms.CharField(
         max_length=255,
