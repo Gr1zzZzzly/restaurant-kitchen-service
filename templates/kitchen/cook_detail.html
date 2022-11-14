@@ -21,8 +21,9 @@
     <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
 
     <div class="ml-3">
-      <h4>Dishes:</h4>
       {% if cook.dishes.all %}
+      <h4>Dishes:</h4>
+
         <table class="table text-center d-inline-block">
           <tr>
             <th>Name</th>
@@ -40,6 +41,8 @@
         <p>No dishes!</p>
       {% endfor %}
       </table>
+      {% else %}
+        <p>This cook hasn't any dishes</p>
       {% endif %}
     </div>
   </div>
