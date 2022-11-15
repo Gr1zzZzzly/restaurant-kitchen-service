@@ -5,6 +5,10 @@ Django project for managing cooks and dishes in kitchen
 ## Check it out!
 [Restaurant kitchen service](https://restaurant-kitchen-service.onrender.com)
 
+
+Login: user /
+Password: user12345
+
 ## Installation
 
 Python must be already installed
