@@ -26,3 +26,8 @@ py manage.py runserver
 * Authentication functionality for Cook/User
 * Managing dishes and cooks directly from website
 * Powerful admin panel for advanced managing
+
+![Website Interface](demo/img.png)
+![Website Interface](demo/img_1.png)
+![Website Interface](demo/img_2.png)
+![Website Interface](demo/img_3.png)
